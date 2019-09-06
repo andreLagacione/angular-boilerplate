@@ -1,0 +1,16 @@
+<div id="container-app" class="d-flex flex-row h-100 w-100" [ngClass]="{'short-menu': toggleMenu}">
+    <aside id="sidebar">
+        <app-sidebar (toggleMenuEvent)="toggleMenu = !$event"></app-sidebar>
+    </aside>
+
+    <div id="base-app">
+        <header id="top">
+
+        </header>
+
+        <main id="content">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+    <!--/base-app-->
+</div>

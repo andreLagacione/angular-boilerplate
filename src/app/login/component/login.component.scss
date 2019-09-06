@@ -1,0 +1,104 @@
+// variables
+$box-login: rgba(255, 255, 255, .8);
+$shadow: rgba(0, 0, 0, .5);
+$border: #9e9e9e;
+$border-focus: #03a9f4;
+$border-error: #c50000;
+$back-btn1: #ebc464;
+$back-btn2: #ef6377;
+
+#login-page {
+    background: url('src/assets/images/back-login.png') no-repeat center/cover;
+
+    .box-login {
+        background-color: $box-login;
+        max-width: 450px;
+        padding: 15px;
+        border-radius: 7px;
+        box-shadow: 0 0 15px 5px $shadow;
+
+        .title {
+            font-size: 24px;
+            color: lighten(#000000, 5%);
+            font-family: 'latoLight';
+            margin: 0;
+        }
+
+        .row-input {
+            margin: 50px 0 0;
+
+            .icon {
+                width: 25px;
+                height: 30px;
+                margin: 0 10px 0 0;
+                color: $border;
+            }
+
+            .input {
+                width: calc(100% - 35px);
+                height: 30px;
+                background-color: transparent;
+                border: 0;
+                border-bottom: 1px solid $border;
+                font-size: 14px;
+                color: #111;
+            }
+
+            &.focus {
+                .icon {
+                    color: $border-focus;
+                }
+
+                .input {
+                    border-color: $border-focus;
+                }
+            }
+
+            &.error {
+                .icon {
+                    color: $border-error;
+                }
+
+                .input {
+                    border-color: $border-error;
+                }
+            }
+
+            .error-messages {
+                font-size: 11px;
+                color: $border-error;
+                position: absolute;
+                right: 0;
+                bottom: -15px;
+            }
+
+        } //.row-input
+
+        .send {
+            margin: 50px 0 0;
+            width: 100%;
+            height: 50px;
+            font-size: 16px;
+            font-family: 'latoLight';
+            color: #fff;
+            text-transform: uppercase;
+            border: 0;
+            border-radius: 25px;
+            background-color: $back-btn1;
+            background-image: linear-gradient(to right, $back-btn1, $back-btn2);
+
+            &:hover {
+                background-color: darken($back-btn1, 5%);
+                background-image: linear-gradient(to right, darken($back-btn1, 5%), darken($back-btn2, 5%));
+            }
+
+            &:disabled {
+                cursor: not-allowed;
+                background-color: lighten($back-btn1, 10%);
+                background-image: linear-gradient(to right, lighten($back-btn1, 10%), lighten($back-btn2, 10%));
+            }
+        }
+
+    } //.box-login
+
+} //#login-page

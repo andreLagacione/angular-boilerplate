@@ -1,0 +1,38 @@
+// variables
+$sidebar: 250px;
+$sidebar-fixed: 50px;
+$z-index-base: 100;
+
+@mixin transition($property, $delay, $animation) {
+	-webkit-transition: $property $delay $animation;
+	   -moz-transition: $property $delay $animation;
+	    -ms-transition: $property $delay $animation;
+	     -o-transition: $property $delay $animation;
+	        transition: $property $delay $animation;
+}
+
+#container-app {
+    &.short-menu {
+        #sidebar {
+            width: $sidebar-fixed;
+        }
+        
+        #base-app {
+            width: calc(100% - $sidebar-fixed);
+        }    
+    }
+
+    #sidebar {
+        width: $sidebar;
+        position: relative;
+        z-index: $z-index-base;
+        @include transition(all, .1s, ease-in-out);
+    }
+    
+    #base-app {
+        width: calc(100% - $sidebar);
+        @include transition(all, .1s, ease-in-out);
+    }
+
+} //#container-app
+

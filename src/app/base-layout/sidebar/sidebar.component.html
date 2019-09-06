@@ -1,0 +1,56 @@
+<div id="sidebar" class="h-100" [ngClass]="{'short': isShort}" (mouseenter)="mouseEnterEvent()" (mouseleave)="mouseLeaveEvent()">
+  <header class="top d-flex flex-row align-items-center">
+    <div class="logo d-flex flex-row align-items-center">
+      <span class="icon">
+        <i class="fas fa-bars"></i>
+      </span>
+
+      <a routerLink="/home" title="Home" class="text">Menu</a>
+    </div>
+
+    <span class="fix-menu text-right" [ngClass]="{'not-fixed': !menuFixed}" (click)="controlFixMenu()">
+      <i class="fas fa-thumbtack"></i>
+    </span>
+  </header>
+
+  <nav class="content custom-scrollBar">
+    <ul>
+      <li class="category" [ngClass]="{'opened': item.open}" *ngFor="let item of menuList">
+        <a [routerLink]="item.route" title="{{ item.nome }}" class="item d-flex flex-row align-items-center" *ngIf="!item.menusFilhos.length">
+          <span class="icon">
+            <i class="fas fa-{{ item.iconClass }}"></i>
+          </span>
+
+          <span class="text">{{ item.nome }}</span>
+        </a>
+        
+        <span class="item d-flex flex-row align-items-center" *ngIf="item.menusFilhos.length" (click)="controlCategory(item, item.open)">
+          <span class="icon">
+            <i class="fas fa-{{ item.iconClass }}"></i>
+          </span>
+
+          <span class="text">{{ item.nome }}</span>
+
+          <span class="arrow">
+            <i class="fas fa-chevron-right" *ngIf="!item.open"></i>
+            <i class="fas fa-chevron-down" *ngIf="item.open"></i>
+          </span>
+        </span>
+        <!--/item-->
+
+        <ul class="sub-category" *ngIf="item.menusFilhos.length && item.open">
+          <li class="item d-flex flex-row align-items-center" *ngFor="let subItem of item.menusFilhos">
+            <span class="icon">
+              <i class="far fa-circle"></i>
+            </span>
+
+            <a [routerLink]="subItem.route" title="{{ subItem.nome }}" class="text">{{ subItem.nome }}</a>
+          </li>
+        </ul>
+        <!--/sub-category-->
+      </li>
+    </ul>
+  </nav>
+  <!--/content-->
+</div>
+<!--/sidebar-->

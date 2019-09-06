@@ -1,0 +1,42 @@
+<div id="login-page" class="vh-100 w-100 d-flex flex-row justify-content-center align-items-center">
+    <form [formGroup]="loginForm" novalidate class="box-login w-100" (submit)="loginRegister()">
+        <h2 class="title">Login</h2>
+
+        <div class="row-input d-flex flex-row relative"
+            [ngClass]="{'error': login.invalid && (login.dirty || login.touched)}">
+            <div class="icon d-flex flex-row justify-content-center align-items-center">
+                <i class="far fa-user"></i>
+            </div>
+
+            <input type="text" class="input" placeholder="Login" autocomplete="off" formControlName="login" />
+            <small class="error-messages" *ngIf="login.invalid && (login.dirty || login.touched)">
+                <small *ngIf="login.errors.required">Campo obrigatório</small>
+                <small *ngIf="login.errors.email">E-mail inválido</small>
+            </small>
+        </div>
+        <!--/row-input-->
+
+        <div class="row-input d-flex flex-row relative"
+            [ngClass]="{'error': pass.invalid && (pass.dirty || pass.touched)}">
+            <div class="icon d-flex flex-row justify-content-center align-items-center">
+                <i class="fas fa-unlock-alt"></i>
+            </div>
+
+            <input type="password" class="input" placeholder="Senha" autocomplete="new-password" formControlName="pass" />
+            <small class="error-messages" *ngIf="pass.invalid && (pass.dirty || pass.touched)">
+                <small *ngIf="pass.errors.required">Campo obrigatório</small>
+                <small *ngIf="pass.errors.minlength">A senha deve ter no mínimo 5 caracteres</small>
+                <small *ngIf="pass.errors.maxlength">A senha deve ter no máximo 15 caracteres</small>
+            </small>
+        </div>
+        <!--/row-input-->
+
+        <button class="send" type="submit" [disabled]="(!loginForm.valid || !login.dirty) || loading">
+            <i class="fas fa-spinner fa-pulse" *ngIf="loading"></i>
+            Login
+        </button>
+
+    </form>
+    <!--/box-login-->
+</div>
+<!--/login-page-->
