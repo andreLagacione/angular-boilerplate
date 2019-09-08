@@ -7,5 +7,5 @@ export const environment = {
   production: false,
 
   // autentication: `${server}`
-  autentication: `http://localhost:3001/v1.0`
+  autentication: `http://localhost:3001/api`
 };

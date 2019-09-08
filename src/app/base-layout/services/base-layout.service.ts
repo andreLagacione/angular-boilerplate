@@ -18,8 +18,8 @@ export class BaseLayoutService extends BaseService {
     }
 
     public getBaseApp() {
-        const permissions = this.genericGet('permissoes');
-        const companies = this.genericGet('empresas');
+        const permissions = this.genericGet('permissions');
+        const companies = this.genericGet('companies');
         const menus = this.genericGet('menus');
 
         return forkJoin([permissions, companies, menus]);
@@ -33,7 +33,7 @@ export class BaseLayoutService extends BaseService {
                 catchError(this.mapsError)
             );
     }
-    
+
     public updateMenuList(menuList: object[]) {
         this.updateMenuList$.emit(menuList);
     }
