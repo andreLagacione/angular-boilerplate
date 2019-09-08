@@ -10,15 +10,15 @@ export class ToasterService {
 	) { }
 
 	public success(message: string) {
-		this.toastr.success(message, 'Sucesso!');
+		this.toastr.success(message, 'Success!');
 	}
 
 	public error(message: string) {
-		this.toastr.error(message, 'Erro!');
+		this.toastr.error(message, 'Error!');
 	}
 
 	public warning(message: string) {
-		this.toastr.warning(message, 'Atenção!');
+		this.toastr.warning(message, 'Warning!');
 	}
 
 	public info(message: string, title: string) {
