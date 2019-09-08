@@ -1,0 +1,26 @@
+// variáveis
+$error-text: #de4246;
+
+.page-error {
+    .center {
+        text-align: center;
+
+        .text {
+            font-size: 25px;
+            display: block;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .content-image {
+            margin: 0 0 30px;
+        }
+    }
+
+    &#offline {
+        .text {
+            color: $error-text;
+        }
+    }
+
+} //.page-error
