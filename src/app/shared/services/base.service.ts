@@ -45,10 +45,6 @@ export abstract class BaseService {
         return header;
     }
 
-
-
-
-
     protected mapsError(error: any): Observable<any> {
         return throwError(error);
     }
