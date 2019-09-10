@@ -1,8 +1,9 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, HashLocationStrategy, DatePipe, registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 // components
 import { AppComponent } from './app.component';
@@ -20,7 +21,7 @@ import { rootRouterConfig } from './app.routes';
 import { LoginRoutes } from './login/login.routes';
 import { HomeRoutes } from './home/home.routes';
 
-registerLocaleData(LOCALE_ID, 'pt-BR');
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -37,9 +38,12 @@ registerLocaleData(LOCALE_ID, 'pt-BR');
 
   ],
   providers: [
-    AuthGuard,
     Title,
     DatePipe,
+    {
+      provide: localePt,
+      useValue: 'pt-BR'
+    },
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
