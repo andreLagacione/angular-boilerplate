@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.titleService.setTitle('Home | Documento Fácil');
+    this.titleService.setTitle('Home | Angular Boilerplate');
   }
 
 }

@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.titleService.setTitle('Login | Documento Fácil');
+    this.titleService.setTitle('Login | Angular Boilerplate');
 
     if (this.storageService.getStorage('token')) {
       this.router.navigate(['/home']);
