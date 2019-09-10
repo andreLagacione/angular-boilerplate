@@ -6,15 +6,15 @@ import { Router } from '@angular/router';
 
 // services
 import { StorageService } from 'src/app/shared/services/storage.service';
-import { LoaderService } from 'src/app/loader/services/loader.service';
 import { ToasterService } from 'src/app/toaster/services/toaster.service';
+import { BaseLayoutService } from 'src/app/base-layout/services/base-layout.service';
 
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
     constructor(
         private storageService: StorageService,
-        private loaderService: LoaderService,
+        private baseLayoutService: BaseLayoutService,
         private toasterService: ToasterService,
         private router: Router
     ) {}
@@ -23,7 +23,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         return next.handle(request)
             .pipe(
                 tap(
-                    () => this.loaderService.loaderControl(true)
+                    () => this.baseLayoutService.loaderControl(true)
                 ),
                 catchError(
                     error => {
@@ -45,7 +45,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                     }
                 ),
                 finalize(
-                    () => this.loaderService.loaderControl(false)
+                    () => this.baseLayoutService.loaderControl(false)
                 )
             );
     }
