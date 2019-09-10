@@ -2,7 +2,10 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+// classes
+import { ErrorInterceptor } from '../security/auth/http-request-interceptor';
 
 // componets
 import { BaseLayoutComponent } from './component/base-layout.component';
@@ -30,7 +33,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   ],
   providers: [
     BaseLayoutService,
-    StorageService
+    StorageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

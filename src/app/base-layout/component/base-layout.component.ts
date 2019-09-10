@@ -15,13 +15,22 @@ import { takeUntil } from 'rxjs/operators';
 export class BaseLayoutComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
   public toggleMenu = false;
+  public showLoader = false;
   private companies: object[];
 
   constructor(
     private baseLayoutService: BaseLayoutService,
     private storageService: StorageService,
     private toasterService: ToasterService
-  ) { }
+  ) {
+    this.baseLayoutService.loaderControl$
+      .pipe(
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe(
+        _response => this.showLoader = _response
+      );
+  }
 
   ngOnInit() {
     this.getEssentialComponents();
