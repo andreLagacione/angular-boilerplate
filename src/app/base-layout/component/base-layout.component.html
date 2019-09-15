@@ -3,12 +3,12 @@
         <app-sidebar (toggleMenuEvent)="toggleMenu = !$event"></app-sidebar>
     </aside>
 
-    <div id="base-app">
+    <div id="base-app" class="w-100">
         <header id="top">
 
         </header>
 
-        <main id="content">
+        <main id="content" class="custom-scrollBar">
             <router-outlet></router-outlet>
 
             <div id="loader" class="d-flex flex-row justify-content-center align-items-center" *ngIf="showLoader">

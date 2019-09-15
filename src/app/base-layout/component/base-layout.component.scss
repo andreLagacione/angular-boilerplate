@@ -32,6 +32,15 @@ $z-index-base: 100;
     #base-app {
         width: calc(100% - $sidebar);
         @include transition(all, .1s, ease-in-out);
+
+        #top {
+            height: 50px;
+        }
+
+        #content {
+            height: calc(100% - 50px);
+            overflow-y: auto;
+        }
     }
 
     #loader {
