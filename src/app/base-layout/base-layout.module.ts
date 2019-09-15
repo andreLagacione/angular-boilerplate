@@ -14,11 +14,13 @@ import { BaseLayoutComponent } from './component/base-layout.component';
 import { BaseLayoutService } from './services/base-layout.service';
 import { StorageService } from '../shared/services/storage.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { TopComponent } from './top/top.component';
 
 @NgModule({
   declarations: [
     BaseLayoutComponent,
-    SidebarComponent
+    SidebarComponent,
+    TopComponent
   ],
   imports: [
     CommonModule,
