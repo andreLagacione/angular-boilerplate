@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // plugins
@@ -6,7 +6,6 @@ import { ToastrModule } from 'ngx-toastr';
 
 // services
 import { ToasterService } from './services/toaster.service';
-import { ModuleWithProviders } from '@angular/compiler/src/core';
 
 @NgModule({
   imports: [
