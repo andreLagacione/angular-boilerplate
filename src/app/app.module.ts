@@ -20,6 +20,7 @@ import { AuthGuard } from './security/auth/auth.guard';
 import { rootRouterConfig } from './app.routes';
 import { LoginRoutes } from './login/login.routes';
 import { HomeRoutes } from './home/home.routes';
+import { AccessDeniedRoutes } from './access-denied/access-denied.routes';
 
 registerLocaleData(localePt);
 
@@ -35,6 +36,7 @@ registerLocaleData(localePt);
     RouterModule.forRoot(rootRouterConfig),
     RouterModule.forRoot(LoginRoutes.getRoutes(null, 'src/app')),
     RouterModule.forRoot(HomeRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
+    RouterModule.forRoot(AccessDeniedRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
 
   ],
   providers: [
