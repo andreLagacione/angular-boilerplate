@@ -16,11 +16,12 @@ import { ToasterModule } from './toaster/toaster.module';
 // services
 import { AuthGuard } from './security/auth/auth.guard';
 
-// rotas
+// routes
 import { rootRouterConfig } from './app.routes';
 import { LoginRoutes } from './login/login.routes';
 import { HomeRoutes } from './home/home.routes';
 import { AccessDeniedRoutes } from './access-denied/access-denied.routes';
+import { ServerOfflineRoutes } from './server-offline/server-offline.routes';
 
 registerLocaleData(localePt);
 
@@ -37,6 +38,7 @@ registerLocaleData(localePt);
     RouterModule.forRoot(LoginRoutes.getRoutes(null, 'src/app')),
     RouterModule.forRoot(HomeRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
     RouterModule.forRoot(AccessDeniedRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
+    RouterModule.forRoot(ServerOfflineRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
 
   ],
   providers: [
