@@ -17,7 +17,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         private baseLayoutService: BaseLayoutService,
         private toasterService: ToasterService,
         private router: Router
-    ) {}
+    ) { }
 
     public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request)
@@ -37,6 +37,10 @@ export class ErrorInterceptor implements HttpInterceptor {
 
                                 case 403:
                                     this.router.navigate(['/access-denied']);
+                                    break;
+
+                                case 0:
+                                    this.router.navigate(['/server-offline']);
                                     break;
                             }
                         }
