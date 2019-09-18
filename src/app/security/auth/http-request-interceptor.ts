@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { tap, catchError, finalize } from 'rxjs/operators';
+import { tap, catchError, finalize, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 // services
@@ -24,6 +24,17 @@ export class ErrorInterceptor implements HttpInterceptor {
             .pipe(
                 tap(
                     () => this.baseLayoutService.loaderControl(true)
+                ),
+                map(
+                    event => {
+                        if (event instanceof HttpResponse) {
+                            if (this.router.url === '/server-offline') {
+                                this.router.navigate(['/home']);
+                            }
+                        }
+
+                        return event;
+                    }
                 ),
                 catchError(
                     error => {
