@@ -4,11 +4,13 @@ $link: #428bca;
 html {
 	font-family: 'lato', arial, helvetica, sans-serif !important;
 	height: 100vh;
+	overflow-x: hidden;
 }
 
 body {
     height: 100vh;
     font-size: 16px;
+	overflow-x: hidden;
 }
 
 .full-hidden {
