@@ -22,6 +22,7 @@ import { LoginRoutes } from './login/login.routes';
 import { HomeRoutes } from './home/home.routes';
 import { AccessDeniedRoutes } from './access-denied/access-denied.routes';
 import { ServerOfflineRoutes } from './server-offline/server-offline.routes';
+import { NotFoundRoutes } from './not-found/not-found.routes';
 
 registerLocaleData(localePt);
 
@@ -39,6 +40,9 @@ registerLocaleData(localePt);
     RouterModule.forRoot(HomeRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
     RouterModule.forRoot(AccessDeniedRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
     RouterModule.forRoot(ServerOfflineRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
+
+    // This router must to be the last one, because it take care invalid routes
+    RouterModule.forRoot(NotFoundRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard))
 
   ],
   providers: [
