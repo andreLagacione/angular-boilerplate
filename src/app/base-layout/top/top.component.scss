@@ -1,0 +1,114 @@
+// variables
+$shadow: rgba(0, 0, 0, .4);
+$border: #efefef;
+$font: rgba(0, 0, 0, .87);
+$initial-zIndex: 100;
+
+@mixin transition($property, $delay, $animation) {
+	-webkit-transition: $property $delay $animation;
+	   -moz-transition: $property $delay $animation;
+	    -ms-transition: $property $delay $animation;
+	     -o-transition: $property $delay $animation;
+	        transition: $property $delay $animation;
+}
+
+#top {
+    height: 50px;
+    box-shadow: 1px 1px 2px 1px $shadow;
+
+    .search-box {
+        width: 70%;
+        padding: 5px 20px;
+        position: relative;
+        font-size: 16px;
+        color: $font;
+
+        .icon {
+            position: absolute;
+            left: 40px;
+            top: 14px;
+        }
+
+        .search {
+            width: 100%;
+            height: 100%;
+            border: 1px solid $border;
+            padding: 5px 10px 5px 50px;
+            border-radius: 2px;
+
+            &:hover,
+            &:focus {
+                border-color: darken($border, 30%);
+            }
+        }
+
+    } //.search-box
+
+    .user-menu {
+        .user {
+            width: 50px;
+            height: 100%;
+            padding: 10px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken(#fff, 10%);
+            }
+
+            .icon {
+                width: 30px;
+                height: 30px;
+                overflow: hidden;
+                display: block;
+                border-radius: 50%;
+            }
+
+        } //.user
+
+        .menu {
+            background-color: #fff;
+            width: 150px;
+            position: absolute;
+            right: -160px;
+            top: 50px;
+            z-index: $initial-zIndex;
+            box-shadow: 1px 1px 2px 1px $shadow;
+            @include transition(all, .1s, ease-in-out);
+
+            &.show {
+                right: 0;
+            }
+
+            ul {
+                border-bottom: 1px solid darken($border, 10%);
+                margin: 0;
+
+                &:last-child {
+                    border: 0;
+                }
+
+                a {
+                    padding: 10px 15px;
+                    display: block;
+                    font-size: 16px;
+                    color: darken($border, 40%);
+
+                    &:hover {
+                        background-color: darken(#fff, 10%);
+                        text-decoration: none;
+                    }
+
+                    .icon {
+                        display: inline-block;
+                        margin: 0 10px 0 0;
+                    }
+                    
+                } //a
+
+            } //ul
+
+        } //.menu
+
+    } //.user-menu
+
+} //#top

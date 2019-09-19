@@ -1,1 +1,56 @@
-<p>top works!</p>
+<header id="top" class="d-flex flex-row justify-content-between">
+    <form class="search-box">
+        <span class="icon">
+            <i class="fa fa-search"></i>
+        </span>
+
+        <input type="text" class="search" placeholder="Explore" />
+    </form>
+
+    <div class="user-menu relative d-flex flex-row justify-content-end align-items-center">
+        <div class="user">
+            <img src="assets/images/goku.jpg" alt="Goku" class="img-responsive icon" />
+
+            <span class="icon d-flex flex-row justify-content-center align-items-center" *ngIf="false">
+                <i class="fa fa-user"></i>
+            </span>
+        </div>
+
+        <nav class="menu" [ngClass]="{'show': showMenu}">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-user"></i></span>
+                        Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-comment-alt"></i></span>
+                        Chat
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-question-circle"></i></span>
+                        Help
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-lock"></i></span>
+                        Lock
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-sign-out-alt"></i></span>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
