@@ -1,0 +1,24 @@
+// varaibles
+$shadow: rgba(0, 0, 0, .2);
+$text: #333;
+$percent: #8e24aa;
+
+.content-card {
+    padding: 15px;
+    box-shadow: 0 0 5px 2px $shadow;
+    border-radius: 2px;
+
+    .title {
+        font-size: 22px;
+        color: $text;
+        margin: 0 20px 0 0;
+        font-weight: normal;
+    }
+
+    .percent {
+        font-size: 15px;
+        color: $percent;
+        font-weight: normal;
+    }
+
+} //.content-card
