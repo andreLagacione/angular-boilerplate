@@ -1,22 +1,27 @@
 <header id="top" class="d-flex flex-row justify-content-between">
-    <form class="search-box">
+    <form [formGroup]="formSearch" class="search-box" (submit)="searchContent($event)">
         <span class="icon">
             <i class="fa fa-search"></i>
         </span>
 
-        <input type="text" class="search" placeholder="Explore" />
+        <input type="text" class="search" placeholder="Explore" formControlName="input" />
     </form>
 
-    <div class="user-menu relative d-flex flex-row justify-content-end align-items-center">
-        <div class="user">
-            <img src="assets/images/goku.jpg" alt="Goku" class="img-responsive icon" />
+    <div class="user-actions relative d-flex flex-row justify-content-end align-items-center">
+        <div class="btn-control control-user-menu" (click)="controlUserMenu()">
+            <img src="assets/images/goku.jpg" alt="Goku" class="img-responsive icon control-user-menu" />
 
-            <span class="icon d-flex flex-row justify-content-center align-items-center" *ngIf="false">
-                <i class="fa fa-user"></i>
+            <span class="icon d-flex flex-row justify-content-center align-items-center control-user-menu"
+                *ngIf="false">
+                <i class="fa fa-user control-user-menu"></i>
             </span>
         </div>
 
-        <nav class="menu" [ngClass]="{'show': showMenu}">
+        <div class="btn-control control-companies-menu" (click)="controlCompaniesMenu()">
+            <img src="assets/images/factory.svg" alt="Goku" class="img-responsive icon control-companies-menu" />
+        </div>
+
+        <nav class="user-menu" [ngClass]="{'show': showUserMenu}">
             <ul>
                 <li>
                     <a href="#">
@@ -53,4 +58,55 @@
             </ul>
         </nav>
     </div>
+    <!--/user-actions-->
 </header>
+
+<div id="menu-companies" class="control-companies-menu" [ngClass]="{'show': showMenuCompanies}">
+    <header class="top d-flex flex-row align-items-center control-companies-menu">
+        <span class="btn-close control-companies-menu" (click)="closeCompaniesMenu()">
+            <i class="fa fa-times control-companies-menu"></i>
+        </span>
+
+        <h3 class="title control-companies-menu">Companies</h3>
+    </header>
+
+    <div class="content custom-scrollBar control-companies-menu">
+        <form [formGroup]="formSearchCompany" class="search-box control-companies-menu" (submit)="searchCompany($event)">
+            <input type="text" class="search control-companies-menu" placeholder="Search company" formControlName="input" />
+        </form>
+
+        <div class="selected control-companies-menu" *ngIf="selectedCompany">
+            <strong class="title control-companies-menu">Selected company</strong>
+
+            <div class="company d-flex flex-row align-items-center control-companies-menu">
+                <div class="image control-companies-menu">
+                    <img src="assets/images/companies/{{ selectedCompany.imageName }}.png"
+                        alt="{{ selectedCompany.description }}" class="img-responsive control-companies-menu" />
+                </div>
+
+                <div>
+                    <h4 class="name control-companies-menu">{{ selectedCompany.description }}</h4>
+                    <p class="id control-companies-menu">{{ selectedCompany.id }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="companies-list control-companies-menu">
+            <div class="company d-flex flex-row align-items-center control-companies-menu" *ngFor="let item of companies"
+                (click)="getSelectedCompany(item)">
+                <div class="image control-companies-menu">
+                    <img src="assets/images/companies/{{ item.imageName }}.png" alt="{{ item.description }}"
+                        class="img-responsive control-companies-menu" />
+                </div>
+
+                <div>
+                    <h4 class="name control-companies-menu">{{ item.description }}</h4>
+                    <p class="id control-companies-menu">{{ item.id }}</p>
+                </div>
+            </div>
+        </div>
+        <!--/companies-list-->
+    </div>
+    <!--/content-->
+</div>
+<!--/menu-companies-->
