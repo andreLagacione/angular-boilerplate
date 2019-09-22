@@ -10,6 +10,9 @@ import { BaseService } from 'src/app/shared/services/base.service';
 export class BaseLayoutService extends BaseService {
     public updateMenuList$: EventEmitter<object[]> = new EventEmitter<object[]>();
     public loaderControl$: EventEmitter<boolean> = new EventEmitter<boolean>();
+    public controlUserMenu$: EventEmitter<boolean> = new EventEmitter<boolean>();
+    public controlCompaniesMenu$: EventEmitter<boolean> = new EventEmitter<boolean>();
+    public updateCompaniyList$: EventEmitter<object[]> = new EventEmitter<object[]>();
 
     constructor(
         private http: HttpClient,
@@ -39,7 +42,19 @@ export class BaseLayoutService extends BaseService {
         this.updateMenuList$.emit(menuList);
     }
 
-    public loaderControl(abrir: boolean) {
-        this.loaderControl$.emit(abrir);
+    public loaderControl(show: boolean) {
+        this.loaderControl$.emit(show);
+    }
+
+    public controlUserMenu(hidden: boolean) {
+        this.controlUserMenu$.emit(hidden);
+    }
+
+    public controlCompaniesMenu(hidden: boolean) {
+        this.controlCompaniesMenu$.emit(hidden);
+    }
+
+    public updateCompaniyList(list: object[]) {
+        this.updateCompaniyList$.emit(list);
     }
 }

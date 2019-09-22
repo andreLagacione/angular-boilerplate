@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 
 // services
 import { BaseLayoutService } from '../services/base-layout.service';
@@ -16,7 +16,6 @@ export class BaseLayoutComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
   public toggleMenu = false;
   public showLoader = false;
-  private companies: object[];
 
   constructor(
     private baseLayoutService: BaseLayoutService,
@@ -49,11 +48,25 @@ export class BaseLayoutComponent implements OnInit, OnDestroy {
       .subscribe(
         _response => {
           this.storageService.setPermissions(_response[0]);
-          this.companies = _response[1];
+          this.baseLayoutService.updateCompaniyList(_response[1]);
           this.baseLayoutService.updateMenuList(_response[2]);
         },
         _error => this.toasterService.error(_error)
-      )
+      );
+  }
+
+  @HostListener('click', ['$event.target'])
+  onClick(event: HTMLElement) {
+    const isUserBox = event.className.split(' ').includes('control-user-menu');
+    const isCompaniesBox = event.className.split(' ').includes('control-companies-menu');
+
+    if (!isUserBox) {
+      this.baseLayoutService.controlUserMenu(false);
+    }
+
+    if (!isCompaniesBox) {
+      this.baseLayoutService.controlCompaniesMenu(false);
+    }
   }
 
 }
