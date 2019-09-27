@@ -5,9 +5,11 @@ import { catchError, map } from 'rxjs/operators';
 
 // services
 import { BaseService } from 'src/app/shared/services/base.service';
+import { BaseResourceService } from 'src/app/shared/services/base-resource.service';
+import { BaseResourceModel } from 'src/app/shared/models/base-resource.model';
 
 @Injectable()
-export class BaseLayoutService extends BaseService {
+export class BaseLayoutService extends BaseResourceService<BaseResourceModel> {
     public updateMenuList$: EventEmitter<object[]> = new EventEmitter<object[]>();
     public loaderControl$: EventEmitter<boolean> = new EventEmitter<boolean>();
     public controlUserMenu$: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -15,10 +17,9 @@ export class BaseLayoutService extends BaseService {
     public updateCompaniyList$: EventEmitter<object[]> = new EventEmitter<object[]>();
 
     constructor(
-        private http: HttpClient,
         public injector: Injector
     ) {
-        super(injector);
+        super('', injector);
     }
 
     public getBaseApp() {
@@ -27,15 +28,6 @@ export class BaseLayoutService extends BaseService {
         const menus = this.genericGet('menus');
 
         return forkJoin([permissions, companies, menus]);
-    }
-
-    private genericGet(route: string): Observable<any> {
-        return this.http
-            .get(`${this.autentication}/${route}`, this.httpJsonAuth())
-            .pipe(
-                map(super.extractData),
-                catchError(this.mapsError)
-            );
     }
 
     public updateMenuList(menuList: object[]) {

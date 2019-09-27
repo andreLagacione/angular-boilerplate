@@ -5,7 +5,6 @@ const server = protocol + '//' + host;
 
 export const environment = {
   production: false,
-
-  // autentication: `${server}`
-  autentication: `http://localhost:3001/api`
+  // url: `${server}:3001/api`
+  url: `http://localhost:3001/api`
 };

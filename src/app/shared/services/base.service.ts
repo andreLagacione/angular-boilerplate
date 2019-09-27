@@ -1,5 +1,4 @@
 import { Injector } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
 
 // class
 import { environment } from 'src/environments/environment';
@@ -10,17 +9,13 @@ import { HttpHeaders } from '@angular/common/http';
 
 export abstract class BaseService {
 
-    protected autentication = environment.autentication;
+    protected url = environment.url;
     private storageService: StorageService;
 
     constructor(
         public injector: Injector
     ) {
         this.storageService = this.injector.get(StorageService);
-    }
-
-    protected extractData(response: any) {
-        return response || {};
     }
 
     protected httpJsonAuth() {
@@ -30,12 +25,11 @@ export abstract class BaseService {
     }
 
     protected getHeader() {
-
         const company = this.storageService.getStorage('selectedCompany');
 
         let header = new HttpHeaders({
             'Content-Type': 'application/json',
-            'Authorization': this.storageService.getStorage('token')
+            Authorization: this.storageService.getStorage('token')
         });
 
         if (company) {
@@ -43,9 +37,5 @@ export abstract class BaseService {
         }
 
         return header;
-    }
-
-    protected mapsError(error: any): Observable<any> {
-        return throwError(error);
     }
 }
