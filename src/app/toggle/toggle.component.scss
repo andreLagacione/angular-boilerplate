@@ -1,0 +1,116 @@
+// variables
+$white: #fff;
+$back: #e7f0f7;
+$border: #afcef3;
+$text-default: #2870b2;
+$text: #575962;
+$back-off: #f4f5f8;
+$border-disabled: #e5edf4;
+$text-disabled: #95a3b7;
+
+@mixin transition($property, $delay, $animation) {
+    -webkit-transition: $property $delay $animation;
+       -moz-transition: $property $delay $animation;
+        -ms-transition: $property $delay $animation;
+         -o-transition: $property $delay $animation;
+            transition: $property $delay $animation;
+}
+
+#toggle-component {
+    margin: 10px 0 0;
+
+    * {
+        @include transition(all, .3s, ease-in-out);
+    }
+
+    .content {
+        width: 60px;
+        height: 30px;
+        border-radius: 15px;
+        background-color: $back;
+        border: 1px solid $border;
+        padding: 0;
+        margin: 14px 0 0;
+        cursor: pointer;
+
+        .status {
+            width: 50%;
+            float: left;
+            text-align: center;
+            line-height: 30px;
+            font-size: 16px;
+            color: $text-default;
+        }
+
+        .switch {
+            width: 32px;
+            height: 32px;
+            background-color: $white;
+            border: 1px solid $border;
+            position: absolute;
+            top: -2px;
+            left: 28px;
+            border-radius: 50%;
+        }
+
+        &.off {
+            border-color: $border-disabled;
+            background-color: $white;
+
+            .status {
+                color: $text;
+            }
+
+            .switch {
+                border-color: $border-disabled;
+                left: -2px;
+            }
+        }
+
+    } //.content
+
+    &.small {
+        .content {
+            width: 38px;
+            height: 20px;
+
+            .status {
+                font-size: 12px;
+                line-height: 18px;
+            }
+
+            .switch {
+                width: 22px;
+                height: 22px;
+                left: 17px;
+			}
+
+			&.off {
+				.switch {
+					left: -2px;
+				}
+			}
+
+        } //.content
+
+    } //&.small
+
+    &.disabled {
+        .content {
+            background-color: $back-off;
+            border-color: $border-disabled;
+            cursor: no-drop;
+
+            .status {
+                color: $text-disabled;
+            }
+
+            .switch {
+                background-color: $border-disabled;
+            }
+
+        } //.content
+
+    } //&.disabled
+
+} //#toggle-component

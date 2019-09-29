@@ -1,0 +1,15 @@
+<div id="toggle-component" [ngClass]="{'disabled': disabled, 'small': small, 'm-0': noMargin}">
+	<div class="content relative" [ngClass]="{'off': !status, 'm-0': noMargin}" (click)="toggleStatus()">
+		<div class="status">
+			<i class="fas fa-check"></i>
+		</div>
+
+		<div class="status">
+			<i class="fas fa-times"></i>
+		</div>
+
+		<div class="switch"></div>
+	</div>
+	<!--/content-->
+</div>
+<!--/toggle-component-->
