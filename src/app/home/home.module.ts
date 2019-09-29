@@ -12,14 +12,14 @@ import { HomeComponent } from './home.component';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [HomeComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    SharedModule
-  ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ]
+	declarations: [HomeComponent],
+	imports: [
+		CommonModule,
+		RouterModule.forChild(routes),
+		SharedModule
+	],
+	schemas: [
+		CUSTOM_ELEMENTS_SCHEMA
+	]
 })
 export class HomeModule { }

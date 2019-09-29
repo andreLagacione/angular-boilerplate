@@ -1,3 +1,3 @@
 export abstract class BaseResourceModel {
-    id?: string | number;
+	id?: string | number;
 }

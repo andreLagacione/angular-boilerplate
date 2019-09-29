@@ -8,25 +8,25 @@ import { ToastrModule } from 'ngx-toastr';
 import { ToasterService } from './services/toaster.service';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ToastrModule.forRoot({
-      maxOpened: 10,
-      preventDuplicates: true,
-      progressBar: true
-    })
-  ],
-  providers: [
-    ToasterService
-  ]
+	imports: [
+		CommonModule,
+		ToastrModule.forRoot({
+			maxOpened: 10,
+			preventDuplicates: true,
+			progressBar: true
+		})
+	],
+	providers: [
+		ToasterService
+	]
 })
 export class ToasterModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: ToasterModule,
-      providers: [
-        ToasterService
-      ]
-    };
-  }
+	static forRoot(): ModuleWithProviders {
+		return {
+			ngModule: ToasterModule,
+			providers: [
+				ToasterService
+			]
+		};
+	}
 }

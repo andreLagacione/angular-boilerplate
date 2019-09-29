@@ -13,31 +13,31 @@ import { ButtonsModule } from '../buttons/buttons.module';
 // services
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ButtonsModule
-  ],
-  exports: [
-    RouterModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ButtonsModule
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor,
-      multi: true
-    }
-  ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ]
+	declarations: [],
+	imports: [
+		CommonModule,
+		RouterModule,
+		HttpClientModule,
+		FormsModule,
+		ReactiveFormsModule,
+		ButtonsModule
+	],
+	exports: [
+		RouterModule,
+		HttpClientModule,
+		FormsModule,
+		ReactiveFormsModule,
+		ButtonsModule
+	],
+	providers: [
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: ErrorInterceptor,
+			multi: true
+		}
+	],
+	schemas: [
+		CUSTOM_ELEMENTS_SCHEMA
+	]
 })
 export class SharedModule { }

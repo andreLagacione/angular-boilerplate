@@ -14,17 +14,17 @@ import { LoginService } from './services/login.service';
 import { StorageService } from '../shared/services/storage.service';
 
 @NgModule({
-  declarations: [LoginComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes),
-  ],
-  providers: [
-    LoginService,
-    StorageService
-  ],
-  exports: [LoginComponent]
+	declarations: [LoginComponent],
+	imports: [
+		CommonModule,
+		FormsModule,
+		ReactiveFormsModule,
+		RouterModule.forChild(routes),
+	],
+	providers: [
+		LoginService,
+		StorageService
+	],
+	exports: [LoginComponent]
 })
 export class LoginModule { }

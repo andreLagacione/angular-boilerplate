@@ -27,35 +27,35 @@ import { NotFoundRoutes } from './not-found/not-found.routes';
 registerLocaleData(localePt);
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    BaseLayoutModule,
-    ToasterModule.forRoot(),
-    RouterModule.forRoot(rootRouterConfig),
-    RouterModule.forRoot(LoginRoutes.getRoutes(null, 'src/app')),
-    RouterModule.forRoot(HomeRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
-    RouterModule.forRoot(AccessDeniedRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
-    RouterModule.forRoot(ServerOfflineRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
+	declarations: [
+		AppComponent
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		BaseLayoutModule,
+		ToasterModule.forRoot(),
+		RouterModule.forRoot(rootRouterConfig),
+		RouterModule.forRoot(LoginRoutes.getRoutes(null, 'src/app')),
+		RouterModule.forRoot(HomeRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
+		RouterModule.forRoot(AccessDeniedRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
+		RouterModule.forRoot(ServerOfflineRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
 
-    // This router must to be the last one, because it take care invalid routes
-    RouterModule.forRoot(NotFoundRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard))
+		// This router must to be the last one, because it take care invalid routes
+		RouterModule.forRoot(NotFoundRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard))
 
-  ],
-  providers: [
-    Title,
-    DatePipe,
-    {
-      provide: localePt,
-      useValue: 'pt-BR'
-    },
-    {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy
-    }],
-  bootstrap: [AppComponent]
+	],
+	providers: [
+		Title,
+		DatePipe,
+		{
+			provide: localePt,
+			useValue: 'pt-BR'
+		},
+		{
+			provide: LocationStrategy,
+			useClass: HashLocationStrategy
+		}],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

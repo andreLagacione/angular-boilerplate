@@ -11,18 +11,18 @@ import { LoginModel } from '../models/login.model';
 @Injectable()
 export class LoginService extends BaseResourceService<LoginModel> {
 
-    constructor(
-        public injector: Injector
-    ) {
-        super('login', injector);
-    }
+	constructor(
+		public injector: Injector
+	) {
+		super('login', injector);
+	}
 
-    public loginRegister(params: LoginModel): Observable<string> {
-        return this.http
-            .post(`${this.url}/login`, params)
-            .pipe(
-                map(super.extractData),
-                catchError(this.mapsError)
-            );
-    }
+	public loginRegister(params: LoginModel): Observable<string> {
+		return this.http
+			.post(`${this.url}/login`, params)
+			.pipe(
+				map(super.extractData),
+				catchError(this.mapsError)
+			);
+	}
 }

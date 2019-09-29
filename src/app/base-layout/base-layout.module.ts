@@ -17,31 +17,31 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopComponent } from './top/top.component';
 
 @NgModule({
-  declarations: [
-    BaseLayoutComponent,
-    SidebarComponent,
-    TopComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
-  exports: [
-    BaseLayoutComponent,
-    SidebarComponent
-  ],
-  providers: [
-    BaseLayoutService,
-    StorageService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor,
-      multi: true
-    }
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+	declarations: [
+		BaseLayoutComponent,
+		SidebarComponent,
+		TopComponent
+	],
+	imports: [
+		CommonModule,
+		RouterModule,
+		HttpClientModule,
+		FormsModule,
+		ReactiveFormsModule,
+	],
+	exports: [
+		BaseLayoutComponent,
+		SidebarComponent
+	],
+	providers: [
+		BaseLayoutService,
+		StorageService,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: ErrorInterceptor,
+			multi: true
+		}
+	],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class BaseLayoutModule { }

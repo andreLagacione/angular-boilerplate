@@ -12,11 +12,11 @@ import { AccessDeniedComponent } from './access-denied.component';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [AccessDeniedComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    SharedModule
-  ]
+	declarations: [AccessDeniedComponent],
+	imports: [
+		CommonModule,
+		RouterModule.forChild(routes),
+		SharedModule
+	]
 })
 export class AccessDeniedModule { }

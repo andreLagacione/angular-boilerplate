@@ -8,15 +8,15 @@ import { ButtonsComponent } from './buttons.component';
 import { TooltipModule } from 'ngx-bootstrap';
 
 @NgModule({
-  declarations: [
-    ButtonsComponent
-  ],
-  exports: [
-    ButtonsComponent
-  ],
-  imports: [
-    CommonModule,
-    TooltipModule.forRoot()
-  ]
+	declarations: [
+		ButtonsComponent
+	],
+	exports: [
+		ButtonsComponent
+	],
+	imports: [
+		CommonModule,
+		TooltipModule.forRoot()
+	]
 })
 export class ButtonsModule { }
