@@ -15,7 +15,7 @@ export class ButtonsComponent {
 	@Input() public disabled: boolean;
 	@Input() public textTooltip: string;
 	@Input() public linkImage: string;
-	@Input() public classeTooltip: string;
+	@Input() public tooltipClass: string;
 	@Input() public position: string;
 
 	public click() {
