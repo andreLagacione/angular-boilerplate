@@ -12,6 +12,7 @@ import { ButtonsModule } from '../buttons/buttons.module';
 import { SidebarFilterModule } from '../sidebar-filter/sidebar-filter.module';
 import { ToggleModule } from '../toggle/toggle.module';
 import { PaginationModule } from '../pagination/pagination.module';
+import { ConfirmModalModule } from '../confirm-modal/confirm-modal.module';
 
 // services
 
@@ -26,7 +27,8 @@ import { PaginationModule } from '../pagination/pagination.module';
 		ButtonsModule,
 		ToggleModule,
 		SidebarFilterModule.forRoot(),
-		PaginationModule.forRoot()
+		PaginationModule.forRoot(),
+		ConfirmModalModule.forRoot()
 	],
 	exports: [
 		RouterModule,
@@ -36,7 +38,8 @@ import { PaginationModule } from '../pagination/pagination.module';
 		ButtonsModule,
 		ToggleModule,
 		SidebarFilterModule,
-		PaginationModule
+		PaginationModule,
+		ConfirmModalModule
 	],
 	providers: [
 		{
