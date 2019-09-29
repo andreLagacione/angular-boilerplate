@@ -9,6 +9,7 @@ import { ErrorInterceptor } from '../security/auth/http-request-interceptor';
 
 // modules
 import { ButtonsModule } from '../buttons/buttons.module';
+import { SidebarFilterModule } from '../sidebar-filter/sidebar-filter.module';
 
 // services
 
@@ -20,14 +21,16 @@ import { ButtonsModule } from '../buttons/buttons.module';
 		HttpClientModule,
 		FormsModule,
 		ReactiveFormsModule,
-		ButtonsModule
+		ButtonsModule,
+		SidebarFilterModule.forRoot()
 	],
 	exports: [
 		RouterModule,
 		HttpClientModule,
 		FormsModule,
 		ReactiveFormsModule,
-		ButtonsModule
+		ButtonsModule,
+		SidebarFilterModule
 	],
 	providers: [
 		{
