@@ -11,6 +11,7 @@ import { ErrorInterceptor } from '../security/auth/http-request-interceptor';
 import { ButtonsModule } from '../buttons/buttons.module';
 import { SidebarFilterModule } from '../sidebar-filter/sidebar-filter.module';
 import { ToggleModule } from '../toggle/toggle.module';
+import { PaginationModule } from '../pagination/pagination.module';
 
 // services
 
@@ -24,7 +25,8 @@ import { ToggleModule } from '../toggle/toggle.module';
 		ReactiveFormsModule,
 		ButtonsModule,
 		ToggleModule,
-		SidebarFilterModule.forRoot()
+		SidebarFilterModule.forRoot(),
+		PaginationModule.forRoot()
 	],
 	exports: [
 		RouterModule,
@@ -33,7 +35,8 @@ import { ToggleModule } from '../toggle/toggle.module';
 		ReactiveFormsModule,
 		ButtonsModule,
 		ToggleModule,
-		SidebarFilterModule
+		SidebarFilterModule,
+		PaginationModule
 	],
 	providers: [
 		{
