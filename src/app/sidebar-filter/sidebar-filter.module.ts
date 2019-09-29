@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // modulos
 import { ButtonsModule } from '../buttons/buttons.module';
-// import { ToggleModule } from '../toggle/toggle.module';
+import { ToggleModule } from '../toggle/toggle.module';
 
 // components
 import { SidebarFilterComponent } from './sidebar-filter.component';
@@ -19,7 +19,7 @@ import { SidebarFilterService } from './services/sidebar-filter.service';
 		ButtonsModule,
 		FormsModule,
 		ReactiveFormsModule,
-		// ToggleModule
+		ToggleModule
 	],
 	declarations: [
 		SidebarFilterComponent

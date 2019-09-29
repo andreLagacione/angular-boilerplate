@@ -10,6 +10,7 @@ import { ErrorInterceptor } from '../security/auth/http-request-interceptor';
 // modules
 import { ButtonsModule } from '../buttons/buttons.module';
 import { SidebarFilterModule } from '../sidebar-filter/sidebar-filter.module';
+import { ToggleModule } from '../toggle/toggle.module';
 
 // services
 
@@ -22,6 +23,7 @@ import { SidebarFilterModule } from '../sidebar-filter/sidebar-filter.module';
 		FormsModule,
 		ReactiveFormsModule,
 		ButtonsModule,
+		ToggleModule,
 		SidebarFilterModule.forRoot()
 	],
 	exports: [
@@ -30,6 +32,7 @@ import { SidebarFilterModule } from '../sidebar-filter/sidebar-filter.module';
 		FormsModule,
 		ReactiveFormsModule,
 		ButtonsModule,
+		ToggleModule,
 		SidebarFilterModule
 	],
 	providers: [
