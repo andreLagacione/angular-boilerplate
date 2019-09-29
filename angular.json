@@ -32,6 +32,7 @@
               "src/assets/styles/tooltip.scss",
               "src/assets/styles/error-pages.scss",
               "src/assets/styles/content-cards.scss",
+              "src/assets/styles/modal.scss",
               "src/assets/styles/reset.css",
               "src/assets/styles/fonts/fonts.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
