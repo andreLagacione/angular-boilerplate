@@ -1,10 +1,10 @@
 import { Component, EventEmitter, HostListener, Input, OnDestroy, Output } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 // services
 import { SidebarFilterService } from './services/sidebar-filter.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-sidebar-filter',
