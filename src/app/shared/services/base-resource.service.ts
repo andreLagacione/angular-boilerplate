@@ -22,7 +22,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> extends B
 		this.http = this.injector.get(HttpClient);
 	}
 
-	public getAll(): Observable<T> {
+	public getAll(): Observable<T[]> {
 		return this.http
 			.get(`${this.url}/${this.apiPath}`, super.httpJsonAuth())
 			.pipe(
