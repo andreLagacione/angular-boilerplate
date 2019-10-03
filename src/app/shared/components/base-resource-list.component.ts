@@ -9,7 +9,6 @@ import { BaseResourceModel } from '../models/base-resource.model';
 
 // classes
 import { FilterManipulate } from '../commons/filter-manipulate.class';
-import { PermissionsManipulate } from '../commons/permissions-manipulate.class';
 
 // services
 import { ToasterService } from 'src/app/toaster/services/toaster.service';
