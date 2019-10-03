@@ -14,7 +14,7 @@ export class ToasterService {
 	}
 
 	public error(message: string) {
-		this.toastr.error(message, 'Error!');
+		this.toastr.error(message || 'Something is wrong, try again later, please :D.', 'Error!');
 	}
 
 	public warning(message: string) {
