@@ -1,4 +1,4 @@
-import { Injector } from '@angular/core';
+import { Injector, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -13,6 +13,8 @@ import { DefaultListModel } from '../models/default-list.model';
 
 export abstract class BaseResourceService<T extends BaseResourceModel> extends BaseService {
 	protected http: HttpClient;
+	public clearForm$: EventEmitter<boolean> = new EventEmitter();
+	public updateFormValues$: EventEmitter<object> = new EventEmitter();
 
 	constructor(
 		protected apiPath: string,
@@ -109,5 +111,13 @@ export abstract class BaseResourceService<T extends BaseResourceModel> extends B
 
 	protected mapsError(error: any): Observable<any> {
 		return throwError(error);
+	}
+
+	public clearForm() {
+		this.clearForm$.emit(true);
+	}
+
+	public updateFormValues(values: object) {
+		this.updateFormValues$.emit(values);
 	}
 }
