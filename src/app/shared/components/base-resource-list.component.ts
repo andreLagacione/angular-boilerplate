@@ -71,12 +71,6 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 		this.unsubscribe$.complete();
 	}
 
-	protected showToaster(type: string, message: string) {
-		setTimeout(() => {
-			this.toasterService[type](message);
-		});
-	}
-
 	protected getAll() {
 		this.resourceService.getAll()
 			.pipe(
@@ -84,7 +78,7 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 			)
 			.subscribe(
 				_response => this.resourceList = _response,
-				_error => this.showToaster('error', _error.error.message)
+				_error => this.toasterService.error(_error.error.message)
 			);
 	}
 
@@ -108,7 +102,7 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 						this.messageNoData = 'Not found informations to show!';
 					}
 				},
-				_error => this.showToaster('error', _error.error.message)
+				_error => this.toasterService.error(_error.error.message)
 			);
 	}
 
@@ -120,10 +114,10 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 			)
 			.subscribe(
 				_response => {
-					this.showToaster('success', _response['message'] || 'Item removed with success.');
+					this.toasterService.success(_response['message'] || 'Item removed with success.');
 					this.getAllPageable();
 				},
-				_error => this.showToaster('error', _error['message'] || 'Item cannot be delete')
+				_error => this.toasterService.error(_error['message'])
 			);
 	}
 
