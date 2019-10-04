@@ -78,7 +78,7 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 			)
 			.subscribe(
 				_response => this.resourceList = _response,
-				_error => this.toasterService.error(_error.error.message)
+				_error => this.toasterService.error(_error['message'])
 			);
 	}
 
@@ -102,7 +102,7 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 						this.messageNoData = 'Not found informations to show!';
 					}
 				},
-				_error => this.toasterService.error(_error.error.message)
+				_error => this.toasterService.error(_error['message'])
 			);
 	}
 
