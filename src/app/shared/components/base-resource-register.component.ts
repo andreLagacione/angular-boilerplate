@@ -12,7 +12,6 @@ import { CheckPermissionsService } from '../services/check-permissions.service';
 import { BaseResourceService } from '../services/base-resource.service';
 import { takeUntil } from 'rxjs/operators';
 
-
 export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel> implements OnInit, OnDestroy {
 	protected unsubscribe$: Subject<void> = new Subject<void>();
 	protected router: Router;
