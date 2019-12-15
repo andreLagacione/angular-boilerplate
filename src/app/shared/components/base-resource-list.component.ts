@@ -13,10 +13,10 @@ import { FilterManipulate } from '../commons/filter-manipulate.class';
 // services
 import { ToasterService } from 'src/app/toaster/services/toaster.service';
 import { SidebarFilterService } from 'src/app/sidebar-filter/services/sidebar-filter.service';
-import { PaginationService } from 'src/app/pagination/services/pagination.service';
 import { ConfirmModalService } from 'src/app/confirm-modal/services/confirm-modal.service';
 import { BaseResourceService } from '../services/base-resource.service';
 import { CheckPermissionsService } from '../services/check-permissions.service';
+import { FooterListService } from 'src/app/footer-list/services/footer-list.service';
 
 export abstract class BaseResouceListComponent<T extends BaseResourceModel> implements OnDestroy {
 	public resourceList: T[] = [];
@@ -25,18 +25,19 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 	protected baseParamsPage: string;
 	protected registerRoute: string;
 	protected editRoute: string;
-	public itensPerPage = ['25', '50', '75', '100'];
 	public pageSize = '25';
 	public currentPage = '0';
 	public totalPages: number;
 	public idItemRemove: string;
 	public messageNoData: string;
+	protected itemsPerPage: string;
 	public sidebarFormFilter: FormGroup;
+	public paginationParams: object;
 	protected toasterService: ToasterService;
 	protected sidebarFilterService: SidebarFilterService;
-	protected paginationService: PaginationService;
 	protected confirmModalService: ConfirmModalService;
 	protected checkPermissionsService: CheckPermissionsService;
+	protected footerListService: FooterListService;
 
 	constructor(
 		protected injector: Injector,
@@ -45,9 +46,9 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 		this.toasterService = injector.get(ToasterService);
 		this.sidebarFilterService = injector.get(SidebarFilterService);
 		this.router = injector.get(Router);
-		this.paginationService = injector.get(PaginationService);
 		this.confirmModalService = injector.get(ConfirmModalService);
 		this.checkPermissionsService = injector.get(CheckPermissionsService);
+		this.footerListService = injector.get(FooterListService);
 
 		this.confirmModalService.confirmEvent$
 			.pipe(
@@ -63,6 +64,22 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 			)
 			.subscribe(
 				() => this.getAllPageable()
+			);
+
+		this.footerListService.changeItemsPerPage$
+			.pipe(
+				takeUntil(this.unsubscribe$)
+			)
+			.subscribe(
+				_response => this.changeItensPerPage(_response)
+			);
+
+		this.footerListService.changePageEvent$
+			.pipe(
+				takeUntil(this.unsubscribe$)
+			)
+			.subscribe(
+				_response => this.changePage(_response)
 			);
 	}
 
@@ -96,7 +113,7 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 
 					if (_response['content'].length) {
 						this.totalPages = _response['totalPages'];
-						this.paginationService.init(_response);
+						this.paginationParams = _response;
 						this.messageNoData = '';
 					} else {
 						this.messageNoData = 'Not found informations to show!';
