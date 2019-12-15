@@ -13,6 +13,7 @@ import { SidebarFilterModule } from '../sidebar-filter/sidebar-filter.module';
 import { ToggleModule } from '../toggle/toggle.module';
 import { PaginationModule } from '../pagination/pagination.module';
 import { ConfirmModalModule } from '../confirm-modal/confirm-modal.module';
+import { FooterListModule } from '../footer-list/footer-list.module';
 
 // services
 
@@ -28,7 +29,8 @@ import { ConfirmModalModule } from '../confirm-modal/confirm-modal.module';
 		ToggleModule,
 		SidebarFilterModule.forRoot(),
 		PaginationModule.forRoot(),
-		ConfirmModalModule.forRoot()
+		ConfirmModalModule.forRoot(),
+		FooterListModule.forRoot()
 	],
 	exports: [
 		RouterModule,
@@ -39,7 +41,8 @@ import { ConfirmModalModule } from '../confirm-modal/confirm-modal.module';
 		ToggleModule,
 		SidebarFilterModule,
 		PaginationModule,
-		ConfirmModalModule
+		ConfirmModalModule,
+		FooterListModule
 	],
 	providers: [
 		{
