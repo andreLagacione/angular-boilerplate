@@ -8,9 +8,9 @@ export class NotFoundRoutes {
 			{
 				component: layoutComponent,
 				path: '**',
-				data: [
-					'RL_DEFAULT'
-				],
+				data: {
+					permissions: ['RL_DEFAULT']
+				},
 				canActivate: [canActivate],
 				canActivateChild: [canActivate],
 				loadChildren: moduleBasePath + '/not-found/not-found.module#NotFoundModule'
