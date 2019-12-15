@@ -1,6 +1,6 @@
 export class FilterManipulate {
 	public static optionsWithValue(filterOptions: object[]): object {
-		let options = {};
+		const options = {};
 
 		Object.keys(filterOptions).forEach(opcao => {
 			if (filterOptions[opcao] instanceof Array && filterOptions[opcao].length) {
