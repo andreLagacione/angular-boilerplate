@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivateChild } from '@angular/router';
+import { DatePipe } from '@angular/common';
+
+// class
+import { CheckPermissions } from './check-permissions';
 
 // services
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { ToasterService } from 'src/app/toaster/services/toaster.service';
-import { DatePipe } from '@angular/common';
 
 @Injectable({
 	providedIn: 'root'
@@ -39,6 +42,17 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 		if (!token) {
 			this.redirectToLogin();
 			return false;
+		}
+
+		if (typeof activated.data['permissions'] !== 'undefined') {
+			const routePermissions = activated.data['permissions'];
+			const systemPermissions = [this.storageService.getStorage('permissions')];
+
+			if (systemPermissions.length) {
+				if (CheckPermissions.check(routePermissions, systemPermissions)) {
+					this.router.navigate(['/access-denied']);
+				}
+			}
 		}
 
 		return true;
