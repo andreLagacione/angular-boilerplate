@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -11,9 +11,9 @@ import { PaginationService } from './services/pagination.service';
 	styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnDestroy {
-	@Input() public totalPages: number;
 	@Output() public changePageEvent: EventEmitter<number> = new EventEmitter();
 
+	public totalPages: number;
 	private unsubscribe$: Subject<void> = new Subject<void>();
 	public pages: Array<any>;
 	public activePage = 1;
@@ -68,7 +68,7 @@ export class PaginationComponent implements OnDestroy {
 	}
 
 	public changePage(page: number, objPage?: object) {
-		if (objPage && objPage['ativa']) {
+		if (objPage && objPage['active']) {
 			return false;
 		}
 
