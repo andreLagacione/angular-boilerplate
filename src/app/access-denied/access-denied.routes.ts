@@ -8,7 +8,7 @@ export class AccessDeniedRoutes {
 				component: layoutComponent,
 				path: 'access-denied',
 				data: {
-					roles: ['RL_DEFAULT']
+					permissions: ['RL_DEFAULT']
 				},
 				canActivate: [canActivate],
 				canActivateChild: [canActivate],

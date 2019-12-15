@@ -9,7 +9,7 @@ export class ServerOfflineRoutes {
 				component: layoutComponent,
 				path: 'server-offline',
 				data: {
-					roles: ['RL_DEFAULT']
+					permissions: ['RL_DEFAULT']
 				},
 				canActivate: [canActivate],
 				canActivateChild: [canActivate],

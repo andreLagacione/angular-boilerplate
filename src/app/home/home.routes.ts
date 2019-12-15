@@ -8,7 +8,7 @@ export class HomeRoutes {
 				component: layoutComponent,
 				path: 'home',
 				data: {
-					roles: ['RL_DEFAULT']
+					permissions: ['RL_DEFAULT']
 				},
 				canActivate: [canActivate],
 				canActivateChild: [canActivate],

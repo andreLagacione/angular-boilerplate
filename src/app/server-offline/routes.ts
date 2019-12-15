@@ -8,7 +8,7 @@ export const routes: Routes = [
 		path: '',
 		component: ServerOfflineComponent,
 		data: {
-			roles: ['RL_DEFAULT']
+			permissions: ['RL_DEFAULT']
 		}
 	}
 ];
