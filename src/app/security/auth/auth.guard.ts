@@ -46,10 +46,10 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
 		if (typeof activated.data['permissions'] !== 'undefined') {
 			const routePermissions = activated.data['permissions'];
-			const systemPermissions = [this.storageService.getStorage('permissions')];
+			const systemPermissions = this.storageService.getStorage('permissions').split(',');
 
 			if (systemPermissions.length) {
-				if (CheckPermissions.check(routePermissions, systemPermissions)) {
+				if (!CheckPermissions.check(routePermissions, systemPermissions)) {
 					this.router.navigate(['/access-denied']);
 				}
 			}
