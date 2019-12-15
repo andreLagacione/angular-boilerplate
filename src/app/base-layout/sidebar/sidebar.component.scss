@@ -170,6 +170,12 @@ $category-open: rgba(255, 255, 255, .04);
     &.short {
         width: $sidebar-small;
 
+        .content {
+            .category {
+                padding: 0;
+            }
+        }
+
         .text,
         .fix-menu,
         .arrow {
