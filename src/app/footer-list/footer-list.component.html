@@ -1,0 +1,22 @@
+<div [ngClass]="{'add-margin': addMargin}" *ngIf="page && totalPages">
+    <footer class="footer-page d-flex flex-row align-items-center justify-content-between">
+        <div>
+            <app-pagination [totalPages]="totalPages" (changePageEvent)="changePageEvent($event)"></app-pagination>
+        </div>
+
+        <div class="d-flex flex-row align-items-center">
+            <div class="info-page">Página:
+                <b>{{ convertPage(page) }}</b> de
+                <b>{{ totalPages }}</b>
+            </div>
+
+            <form [formGroup]="pageSizeControl">
+                <select name="items-per-page" class="inputs-form select items-per-page"
+                    (change)="changeItemsPerPage()" formControlName="pageSize">
+                    <option value="{{ item }}" *ngFor="let item of itemsPerPage">{{ item }}</option>
+                </select>
+            </form>
+        </div>
+        <!--/items-per-page-->
+    </footer>
+</div>

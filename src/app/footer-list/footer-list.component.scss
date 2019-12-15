@@ -1,0 +1,23 @@
+// variaveis
+$text: #3b495e;
+$blue: #2870b2;
+
+.footer-page {
+    margin: 20px 0 0;
+
+    .info-page {
+        font-size: 14px;
+        color: $text;
+        margin: 0 10px 0 0;
+    
+        b {
+            font-family: 'proximaBold';
+            color: $blue;
+        }
+    }
+
+    .inputs-form {
+        width: 50px;
+    }    
+
+} //.footer-page
