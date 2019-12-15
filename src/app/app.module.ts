@@ -23,6 +23,7 @@ import { HomeRoutes } from './home/home.routes';
 import { AccessDeniedRoutes } from './access-denied/access-denied.routes';
 import { ServerOfflineRoutes } from './server-offline/server-offline.routes';
 import { NotFoundRoutes } from './not-found/not-found.routes';
+import { UsersRoutes } from './users/users.routes';
 
 registerLocaleData(localePt);
 
@@ -38,6 +39,7 @@ registerLocaleData(localePt);
 		RouterModule.forRoot(rootRouterConfig),
 		RouterModule.forRoot(LoginRoutes.getRoutes(null, 'src/app')),
 		RouterModule.forRoot(HomeRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
+		RouterModule.forRoot(UsersRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
 		RouterModule.forRoot(AccessDeniedRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
 		RouterModule.forRoot(ServerOfflineRoutes.getRoutes(BaseLayoutComponent, 'src/app', AuthGuard)),
 
