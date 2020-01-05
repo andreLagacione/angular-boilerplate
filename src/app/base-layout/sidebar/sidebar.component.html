@@ -16,7 +16,7 @@
   <nav class="content custom-scrollBar">
     <ul>
       <li class="category" [ngClass]="{'opened': item.open}" *ngFor="let item of menuList">
-        <a [routerLink]="item.route" title="{{ item.nome }}" class="item d-flex flex-row align-items-center" *ngIf="!item.menusFilhos.length">
+        <a [routerLink]="item.route" title="{{ item.nome }}" class="item d-flex flex-row align-items-center" *ngIf="item.menusFilhos && !item.menusFilhos.length">
           <span class="icon">
             <i class="fas fa-{{ item.iconClass }}"></i>
           </span>
@@ -24,7 +24,7 @@
           <span class="text">{{ item.nome }}</span>
         </a>
         
-        <span class="item d-flex flex-row align-items-center" *ngIf="item.menusFilhos.length" (click)="controlCategory(item, item.open)">
+        <span class="item d-flex flex-row align-items-center" *ngIf="item.menusFilhos && item.menusFilhos.length" (click)="controlCategory(item, item.open)">
           <span class="icon">
             <i class="fas fa-{{ item.iconClass }}"></i>
           </span>
@@ -38,7 +38,7 @@
         </span>
         <!--/item-->
 
-        <ul class="sub-category" *ngIf="item.menusFilhos.length && item.open">
+        <ul class="sub-category" *ngIf="item.menusFilhos && item.menusFilhos.length && item.open">
           <li class="item d-flex flex-row align-items-center" *ngFor="let subItem of item.menusFilhos">
             <span class="icon">
               <i class="far fa-circle"></i>
