@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+
+// services
 import { FooterListService } from './services/footer-list.service';
 import { PaginationService } from '../pagination/services/pagination.service';
 

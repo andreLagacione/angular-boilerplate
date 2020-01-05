@@ -7,7 +7,7 @@ import { CheckPermissions } from './check-permissions';
 
 // services
 import { StorageService } from 'src/app/shared/services/storage.service';
-import { ToasterService } from 'src/app/toaster/services/toaster.service';
+import { ToasterService } from 'src/app/shared/components/toaster/services/toaster.service';
 
 @Injectable({
 	providedIn: 'root'

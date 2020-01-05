@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 // services
 import { BaseLayoutService } from '../services/base-layout.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
-import { ToasterService } from 'src/app/toaster/services/toaster.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { ToasterService } from 'src/app/shared/components/toaster/services/toaster.service';
 
 @Component({
 	selector: 'app-base-layout',

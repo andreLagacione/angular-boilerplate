@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 // services
 import { StorageService } from 'src/app/shared/services/storage.service';
-import { ToasterService } from 'src/app/toaster/services/toaster.service';
+import { ToasterService } from 'src/app/shared/components/toaster/services/toaster.service';
 import { BaseLayoutService } from 'src/app/base-layout/services/base-layout.service';
 
 

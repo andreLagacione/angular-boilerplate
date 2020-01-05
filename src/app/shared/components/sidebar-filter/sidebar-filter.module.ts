@@ -10,7 +10,7 @@ import { ToggleModule } from '../toggle/toggle.module';
 import { SidebarFilterComponent } from './sidebar-filter.component';
 
 // services
-import { ToasterService } from 'src/app/toaster/services/toaster.service';
+import { ToasterService } from 'src/app/shared/components/toaster/services/toaster.service';
 import { SidebarFilterService } from './services/sidebar-filter.service';
 
 @NgModule({

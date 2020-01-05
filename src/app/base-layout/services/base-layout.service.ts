@@ -1,10 +1,7 @@
 import { Injectable, Injector, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
 
 // services
-import { BaseService } from 'src/app/shared/services/base.service';
 import { BaseResourceService } from 'src/app/shared/services/base-resource.service';
 import { BaseResourceModel } from 'src/app/shared/models/base-resource.model';
 

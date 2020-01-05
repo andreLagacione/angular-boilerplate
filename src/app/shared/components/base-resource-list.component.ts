@@ -11,12 +11,12 @@ import { BaseResourceModel } from '../models/base-resource.model';
 import { FilterManipulate } from '../commons/filter-manipulate.class';
 
 // services
-import { ToasterService } from 'src/app/toaster/services/toaster.service';
-import { SidebarFilterService } from 'src/app/sidebar-filter/services/sidebar-filter.service';
-import { ConfirmModalService } from 'src/app/confirm-modal/services/confirm-modal.service';
+import { ToasterService } from 'src/app/shared/components/toaster/services/toaster.service';
+import { SidebarFilterService } from 'src/app/shared/components/sidebar-filter/services/sidebar-filter.service';
+import { ConfirmModalService } from './confirm-modal/services/confirm-modal.service';
 import { BaseResourceService } from '../services/base-resource.service';
 import { CheckPermissionsService } from '../services/check-permissions.service';
-import { FooterListService } from 'src/app/footer-list/services/footer-list.service';
+import { FooterListService } from 'src/app/shared/components/footer-list/services/footer-list.service';
 
 export abstract class BaseResouceListComponent<T extends BaseResourceModel> implements OnDestroy {
 	public resourceList: T[] = [];

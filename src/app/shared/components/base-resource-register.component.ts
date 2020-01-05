@@ -2,15 +2,15 @@ import { OnInit, OnDestroy, Injector } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 // models
 import { BaseResourceModel } from '../models/base-resource.model';
 
 // services
-import { ToasterService } from 'src/app/toaster/services/toaster.service';
+import { ToasterService } from 'src/app/shared/components/toaster/services/toaster.service';
 import { CheckPermissionsService } from '../services/check-permissions.service';
 import { BaseResourceService } from '../services/base-resource.service';
-import { takeUntil } from 'rxjs/operators';
 
 export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel> implements OnInit, OnDestroy {
 	protected unsubscribe$: Subject<void> = new Subject<void>();

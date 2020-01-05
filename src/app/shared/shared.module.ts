@@ -8,12 +8,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorInterceptor } from '../security/auth/http-request-interceptor';
 
 // modules
-import { ButtonsModule } from '../buttons/buttons.module';
-import { SidebarFilterModule } from '../sidebar-filter/sidebar-filter.module';
-import { ToggleModule } from '../toggle/toggle.module';
-import { PaginationModule } from '../pagination/pagination.module';
-import { ConfirmModalModule } from '../confirm-modal/confirm-modal.module';
-import { FooterListModule } from '../footer-list/footer-list.module';
+import { ButtonsModule } from './components/buttons/buttons.module';
+import { SidebarFilterModule } from './components/sidebar-filter/sidebar-filter.module';
+import { ToggleModule } from './components/toggle/toggle.module';
+import { PaginationModule } from './components/pagination/pagination.module';
+import { ConfirmModalModule } from './components/confirm-modal/confirm-modal.module';
+import { FooterListModule } from './components/footer-list/footer-list.module';
 
 // services
 

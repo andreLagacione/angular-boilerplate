@@ -11,7 +11,7 @@ import { BaseLayoutComponent } from './base-layout/component/base-layout.compone
 
 // modules
 import { BaseLayoutModule } from './base-layout/base-layout.module';
-import { ToasterModule } from './toaster/toaster.module';
+import { ToasterModule } from './shared/components/toaster/toaster.module';
 
 // services
 import { AuthGuard } from './security/auth/auth.guard';

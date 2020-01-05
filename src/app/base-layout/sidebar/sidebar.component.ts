@@ -81,7 +81,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 	}
 
 	private checkWhatCategoryWasOpened() {
-		for (let item of this.menuList) {
+		for (const item of this.menuList) {
 			if (item['nome'] === this.nameCategoryOpen) {
 				item['open'] = true;
 			}
