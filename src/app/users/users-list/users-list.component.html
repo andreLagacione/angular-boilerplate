@@ -1,1 +1,41 @@
 
+<header class="top-page d-flex flex-row justify-content-between align-itens-center">
+    <div class="w-50">
+        <h2 class="title">Users</h2>
+    </div>
+
+    <div class="w-50 d-flex justify-content-end align-itens-center">
+        <app-buttons [icon]="'fas fa-filter'" [classes]="'auto'" [type]="'button'" [text]="'Filter'" (eventClick)="filter()"></app-buttons>
+    </div>
+</header>
+
+<table class="default w-100 mt-4">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Login</th>
+			<th>E-mail</th>
+			<th>Last Access</th>
+			<th>Company</th>
+			<th>CPF</th>
+			<th>Telefone</th>
+			<th class="col-actions">Actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr *ngFor="let item of resourceList">
+			<td>{{ item.name }}</td>
+			<td>{{ item.login }}</td>
+			<td>{{ item.email }}</td>
+			<td>{{ item.lastAccess }}</td>
+			<td>{{ item.company }}</td>
+			<td>{{ item.cpf | cpfCnpj }}</td>
+			<td>{{ item.phone | fone }}</td>
+			<td class="col-actions">
+                <app-buttons [icon]="'fas fa-pen'" [classes]="'table-action secondary'" [type]="'button'" (eventClick)="edit()"></app-buttons>
+                <app-buttons [icon]="'fas fa-trash-alt'" [classes]="'table-action danger'" [type]="'button'" (eventClick)="remove()"></app-buttons>
+            </td>
+		</tr>
+	</tbody>
+</table>
