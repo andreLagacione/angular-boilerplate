@@ -33,9 +33,9 @@ export abstract class BaseResourceService<T extends BaseResourceModel> extends B
 			);
 	}
 
-	public getAllPageable(pageParams: string, params?: object): Observable<DefaultListModel<T>> {
+	public getAllPageable(params?: object): Observable<DefaultListModel<T>> {
 		return this.http
-			.post(`${this.url}/${this.apiPath}${pageParams}`, params, super.httpJsonAuth())
+			.post(`${this.url}/${this.apiPath}`, params, super.httpJsonAuth())
 			.pipe(
 				map(this.extractData),
 				catchError(this.mapsError)
