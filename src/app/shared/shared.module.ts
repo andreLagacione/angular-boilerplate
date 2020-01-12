@@ -7,6 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // classes
 import { ErrorInterceptor } from '../security/auth/http-request-interceptor';
 
+// pipes
+import { CpfCnpjPipe } from './pipes/cpf-cnpj.pipe';
+import { FonePipe } from './pipes/telefone.pipe';
+
 // modules
 import { ButtonsModule } from './components/buttons/buttons.module';
 import { SidebarFilterModule } from './components/sidebar-filter/sidebar-filter.module';
@@ -18,7 +22,10 @@ import { FooterListModule } from './components/footer-list/footer-list.module';
 // services
 
 @NgModule({
-	declarations: [],
+	declarations: [
+		CpfCnpjPipe,
+		FonePipe,
+	],
 	imports: [
 		CommonModule,
 		RouterModule,
@@ -33,6 +40,8 @@ import { FooterListModule } from './components/footer-list/footer-list.module';
 		FooterListModule.forRoot()
 	],
 	exports: [
+		CpfCnpjPipe,
+		FonePipe,
 		RouterModule,
 		HttpClientModule,
 		FormsModule,
