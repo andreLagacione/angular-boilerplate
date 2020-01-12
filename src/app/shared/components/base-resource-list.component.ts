@@ -100,7 +100,10 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 	}
 
 	protected getAllPageable() {
-		const params = FilterManipulate.optionsWithValue(this.sidebarFormFilter.value);
+		const params = {
+			pageNumber: this.currentPage,
+			pageSize: this.pageSize
+		}; // FilterManipulate.optionsWithValue(this.sidebarFormFilter.value);
 
 		this.resourceService.getAllPageable(this.baseParamsPage, params)
 			.pipe(
