@@ -34,6 +34,7 @@
               "src/assets/styles/content-cards.scss",
               "src/assets/styles/modal.scss",
               "src/assets/styles/table.scss",
+              "src/assets/styles/forms.scss",
               "src/assets/styles/reset.css",
               "src/assets/styles/fonts/fonts.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
