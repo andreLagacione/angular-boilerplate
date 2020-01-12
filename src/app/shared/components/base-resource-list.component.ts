@@ -32,7 +32,6 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 	public messageNoData: string;
 	protected itemsPerPage: string;
 	public sidebarFormFilter: FormGroup;
-	public paginationParams: object;
 	protected toasterService: ToasterService;
 	protected sidebarFilterService: SidebarFilterService;
 	protected confirmModalService: ConfirmModalService;
@@ -105,7 +104,7 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 			pageSize: this.pageSize
 		}; // FilterManipulate.optionsWithValue(this.sidebarFormFilter.value);
 
-		this.resourceService.getAllPageable(this.baseParamsPage, params)
+		this.resourceService.getAllPageable(params)
 			.pipe(
 				takeUntil(this.unsubscribe$)
 			)
@@ -116,7 +115,7 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 
 					if (_response['content'].length) {
 						this.totalPages = _response['totalPages'];
-						this.paginationParams = _response;
+						this.footerListService.initFotterList(_response);
 						this.messageNoData = '';
 					} else {
 						this.messageNoData = 'Not found informations to show!';
