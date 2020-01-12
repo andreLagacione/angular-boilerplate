@@ -5,11 +5,11 @@
     </div>
 
     <div class="w-50 d-flex justify-content-end align-itens-center">
-        <app-buttons [icon]="'fas fa-filter'" [classes]="'auto'" [type]="'button'" [text]="'Filter'" (eventClick)="filter()"></app-buttons>
+        <app-buttons [icon]="'fas fa-filter'" [classes]="'auto'" [type]="'button'" [text]="'Filter'" (eventClick)="openSidbarFilter()"></app-buttons>
     </div>
 </header>
 
-<table class="default w-100 mt-4">
+<table class="default w-100 mt-4" *ngIf="resourceList.length">
 	<thead>
 		<tr>
 			<th>Name</th>
@@ -40,4 +40,24 @@
 	</tbody>
 </table>
 
+<div class="alert alert-primary mt-4" *ngIf="!resourceList.length">Not data to show!</div>
+
 <app-footer-list></app-footer-list>
+
+<app-sidebar-filter (eventClear)="filterClear()">
+    <content>
+        <form novalidate [formGroup]="sidebarFormFilter">
+			<div class="form-group row">
+				<div class="col-md-12">
+					<label>Company</label>
+					<select class="inputs-form select" formControlName="company">
+						<option value="">Selecione</option>
+						<option value="{{ item.id }}" *ngFor="let item of companiesList | async">{{ item.name }}</option>
+					</select>
+				</div>
+            </div>
+		</form>
+    </content>
+</app-sidebar-filter>
+
+<app-confirm-modal></app-confirm-modal>
