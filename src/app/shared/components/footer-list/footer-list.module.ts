@@ -8,6 +8,9 @@ import { FooterListComponent } from './footer-list.component';
 // services
 import { FooterListService } from './services/footer-list.service';
 
+// module
+import { PaginationModule } from '../pagination/pagination.module';
+
 @NgModule({
 	declarations: [
 		FooterListComponent
@@ -19,6 +22,7 @@ import { FooterListService } from './services/footer-list.service';
 		CommonModule,
 		FormsModule,
 		ReactiveFormsModule,
+		PaginationModule.forRoot()
 	],
 	providers: [
 		FooterListService

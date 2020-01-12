@@ -1,22 +1,23 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 // services
 import { FooterListService } from './services/footer-list.service';
 import { PaginationService } from '../pagination/services/pagination.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-footer-list',
 	templateUrl: './footer-list.component.html',
 	styleUrls: ['./footer-list.component.scss']
 })
-export class FooterListComponent implements OnInit {
-	@Input() public paginationParams: object;
-	@Input() public addMargin: boolean;
-
-	public page: string;
+export class FooterListComponent implements OnDestroy {
+	protected unsubscribe$: Subject<void> = new Subject<void>();
+	public activePage: number;
 	public totalPages: string;
 	public itemsPerPage = ['25', '50', '75', '100'];
+	public showComponent = false;
 
 	public pageSizeControl = new FormGroup({
 		pageSize: new FormControl('25')
@@ -25,12 +26,27 @@ export class FooterListComponent implements OnInit {
 	constructor(
 		private footerListService: FooterListService,
 		private paginationService: PaginationService
-	) { }
+	) {
+		this.footerListService.initFotterList$
+			.pipe(
+				takeUntil(this.unsubscribe$)
+			)
+			.subscribe(
+				_response => {
+					this.showComponent = true;
+					this.activePage = parseInt(_response['number'], 10) + 1;
+					this.totalPages = _response['totalPages'];
+					this.paginationService.init({
+						activePage: this.activePage,
+						totalPages: this.totalPages
+					});
+				}
+			);
+	}
 
-	ngOnInit() {
-		this.page = this.paginationParams['number'];
-		this.totalPages = this.paginationParams['totalPages'];
-		this.paginationService.init(this.paginationParams);
+	ngOnDestroy() {
+		this.unsubscribe$.next();
+		this.unsubscribe$.complete();
 	}
 
 	public convertPage(page: string): number {

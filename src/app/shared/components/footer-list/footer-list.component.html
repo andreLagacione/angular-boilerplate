@@ -1,7 +1,7 @@
-<div [ngClass]="{'add-margin': addMargin}" *ngIf="page && totalPages">
+<div [ngClass]="{'add-margin': addMargin}" *ngIf="showComponent">
     <footer class="footer-page d-flex flex-row align-items-center justify-content-between">
         <div>
-            <app-pagination [totalPages]="totalPages" (changePageEvent)="changePageEvent($event)"></app-pagination>
+            <app-pagination [activePage]="activePage" [totalPages]="totalPages" (changePageEvent)="changePageEvent($event)"></app-pagination>
         </div>
 
         <div class="d-flex flex-row align-items-center">

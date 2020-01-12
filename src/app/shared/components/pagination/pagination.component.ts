@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Output, OnDestroy, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -10,13 +10,13 @@ import { PaginationService } from './services/pagination.service';
 	templateUrl: './pagination.component.html',
 	styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnDestroy {
+export class PaginationComponent implements OnInit, OnDestroy {
+	@Input() public activePage: number;
+	@Input() public totalPages: number;
 	@Output() public changePageEvent: EventEmitter<number> = new EventEmitter();
 
-	public totalPages: number;
 	private unsubscribe$: Subject<void> = new Subject<void>();
 	public pages: Array<any>;
-	public activePage = 1;
 
 	constructor(
 		private paginationService: PaginationService
@@ -26,8 +26,16 @@ export class PaginationComponent implements OnDestroy {
 				takeUntil(this.unsubscribe$)
 			)
 			.subscribe(
-				_response => this.buildPagination(_response['number'] + 1, _response['totalPages'])
+				_response => {
+					this.activePage = _response['activePage'];
+					this.totalPages = _response['totalPages'];
+					this.buildPagination();
+				}
 			);
+	}
+
+	ngOnInit() {
+		this.buildPagination();
 	}
 
 	ngOnDestroy() {
@@ -35,20 +43,18 @@ export class PaginationComponent implements OnDestroy {
 		this.unsubscribe$.complete();
 	}
 
-	private buildPagination(page: number, total: number) {
-		this.activePage = page;
-		this.totalPages = total;
+	private buildPagination() {
 		this.pages = [];
 
 		const numRange = 9;
 		const numDivide = 4;
 		let startRange = 1;
 
-		if (page - numDivide > 0 && this.totalPages > numRange) {
-			startRange = page - numDivide;
+		if (this.activePage - numDivide > 0 && this.totalPages > numRange) {
+			startRange = this.activePage - numDivide;
 		}
 
-		if (page >= this.totalPages - numDivide && this.totalPages > numRange) {
+		if (this.activePage >= this.totalPages - numDivide && this.totalPages > numRange) {
 			startRange = this.totalPages - numRange + 1;
 		}
 
@@ -62,7 +68,7 @@ export class PaginationComponent implements OnDestroy {
 
 			this.pages.push({
 				name: intX,
-				active: intX === page
+				active: intX === this.activePage
 			});
 		}
 	}
