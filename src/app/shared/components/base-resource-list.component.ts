@@ -40,7 +40,7 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 
 	constructor(
 		protected injector: Injector,
-		private resourceService: BaseResourceService<T>
+		protected resourceService: BaseResourceService<T>
 	) {
 		this.toasterService = injector.get(ToasterService);
 		this.sidebarFilterService = injector.get(SidebarFilterService);
