@@ -22,7 +22,6 @@ export class UsersListComponent extends BaseResouceListComponent<UsersModel> imp
 	}
 
 	protected getAllPageable() {
-		this.baseParamsPage = ''; // `?sort=aluno,asc&size=${this.pageSize}&page=${this.currentPage}`;
 		super.getAllPageable();
 	}
 
