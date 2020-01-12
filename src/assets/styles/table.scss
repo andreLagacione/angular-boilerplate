@@ -1,0 +1,119 @@
+// variáveis
+$border-tr: #c5d0e1;
+$text-th: #95a3b7;
+$text-td: #444d57;
+$border-left-th: #c5d0e1;
+$border-left-td: #afcef3;
+
+$danger: (
+    back: #f2dede,
+    border: #f9575b
+);
+
+$warning: (
+    back: #fcf8e3,
+    border: #f0ad4e
+);
+
+$success: (
+    back: #dff0d8,
+    border: #8cc152
+);
+
+@mixin cores($back, $border) {
+    border-left-color: $border;
+
+    td {
+        background-color: $back;
+    }
+}
+
+.scroll-table {
+    width: 100%;
+    overflow-x: auto;
+
+    table {
+        min-width: 1500px;
+    }
+}
+
+table,
+.table {
+    &.default {
+		thead,
+		.thead {
+			tr,
+			.tr {
+                border-left-color: $border-left-th;
+                border-style: solid;
+            }
+        }
+
+		tbody,
+		.tbody {
+			tr,
+			.tr {
+                border-left-color: $border-left-td;
+            }
+        }
+
+		tr,
+		.tr {
+            border: 1px dashed $border-tr;
+            border-left: 4px solid;
+            border-right: 1px solid $border-tr;
+
+            &.danger {
+                @include cores(
+                    map-get($danger, back),
+                    map-get($danger, border)
+                )
+            }
+
+            &.warning {
+                @include cores(
+                    map-get($warning, back),
+                    map-get($warning, border)
+                )
+            }
+
+            &.success {
+                @include cores(
+                    map-get($success, back),
+                    map-get($success, border)
+                )
+            }
+        }
+
+		td,
+		.td {
+            padding: 10px;
+            color: $text-td;
+            font-size: 0.688em;
+            background-color: #fff;
+            vertical-align: middle;
+        }
+
+		th,
+		.th {
+            text-transform: uppercase;
+            font-size: 0.688em;
+            color: $text-th;
+            font-family: 'latoBold';
+            padding: 5px 10px;
+            background-color: #f9fafb;
+            border-right: 1px dashed $border-tr;
+            vertical-align: middle;
+
+            &:last-child {
+                border: 0;
+            }
+        }
+
+    } //&.default
+
+    .col-actions {
+        width: 90px;
+    }
+
+} //table
